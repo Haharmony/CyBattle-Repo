@@ -27,7 +27,7 @@ public class WeaponChangePro : MonoBehaviour
     {
         camObject = GameObject.Find("PlayerCam");
         //aimTarget = GameObject.Find("AimRef").transform;
-        if(this.gameObject.GetComponent<PhotonView>().IsMine == true)
+        if (this.gameObject.GetComponent<PhotonView>().IsMine == true)
         {
             cam = camObject.GetComponent<CinemachineVirtualCamera>();
             cam.Follow = this.gameObject.transform;
@@ -40,38 +40,38 @@ public class WeaponChangePro : MonoBehaviour
         }
 
         testForWeapons = GameObject.Find("Weapon1Pickup(Clone)");
-        if(testForWeapons == null)
+        if (testForWeapons == null)
         {
             var spawner = GameObject.Find("SpawnScript");
             spawner.GetComponent<SpawnCharacters>().SpawnWeaponsStart();
         }
     }
-/*
-    void SetLookAt()
-    {
-        if(aimTarget != null)
+    /*
+        void SetLookAt()
         {
-            for(int i = 0; i < aimObjects.Length; i++)
+            if(aimTarget != null)
             {
-                var target = aimObjects[i].data.sourceObjects;
-                target.SetTransform(0, aimTarget.transform);
-                aimObjects[i].data.sourceObjects = target;
+                for(int i = 0; i < aimObjects.Length; i++)
+                {
+                    var target = aimObjects[i].data.sourceObjects;
+                    target.SetTransform(0, aimTarget.transform);
+                    aimObjects[i].data.sourceObjects = target;
+                }
+                rig.Build();
             }
-            rig.Build();
-        }
-    }*/
+        }*/
 
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetMouseButtonDown(1))
+        if (Input.GetMouseButtonDown(1) && this.gameObject.GetComponent<PhotonView>().IsMine == true)
         {
-            weaponNumber++;
-            if(weaponNumber > weapons.Length - 1)
+            this.GetComponent<PhotonView>().RPC("Change", RpcTarget.AllBuffered);
+            if (weaponNumber > weapons.Length - 1)
             {
                 weaponNumber = 0;
             }
-            for(int i = 0; i < weapons.Length; i++)
+            for (int i = 0; i < weapons.Length; i++)
             {
                 weapons[i].SetActive(false);
             }
@@ -80,5 +80,23 @@ public class WeaponChangePro : MonoBehaviour
             rightHand.data.target = rightTargets[weaponNumber];
             rig.Build();
         }
+    }
+
+    [PunRPC]
+    public void Change()
+    {
+        weaponNumber++;
+        if (weaponNumber > weapons.Length - 1)
+        {
+            weaponNumber = 0;
+        }
+        for (int i = 0; i < weapons.Length; i++)
+        {
+            weapons[i].SetActive(false);
+        }
+        weapons[weaponNumber].SetActive(true);
+        leftHand.data.target = leftTargets[weaponNumber];
+        rightHand.data.target = rightTargets[weaponNumber];
+        rig.Build();
     }
 }

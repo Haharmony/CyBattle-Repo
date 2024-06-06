@@ -1974,13 +1974,14 @@ GameObject:
   m_Component:
   - component: {fileID: 8215274013393697488}
   - component: {fileID: 8435706234701007493}
+  - component: {fileID: 5074455081606511323}
   m_Layer: 0
   m_Name: Bio Integrity Gun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8215274013393697488
 Transform:
   m_ObjectHideFlags: 0
@@ -2016,6 +2017,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48948dfe9d76b07488dacd46a7955fa1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &5074455081606511323
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2373452635369890875}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SynchronizePosition: 1
+  m_SynchronizeRotation: 1
+  m_SynchronizeScale: 0
+  m_UseLocal: 1
 --- !u!1 &2412151742952583470
 GameObject:
   m_ObjectHideFlags: 0
@@ -10347,13 +10364,14 @@ GameObject:
   - component: {fileID: 8470387353868525420}
   - component: {fileID: 5804314976485769796}
   - component: {fileID: 7068108891529507975}
+  - component: {fileID: 8598381219254044121}
   m_Layer: 0
   m_Name: Sci-Fi Gun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1988993034070472509
 Transform:
   m_ObjectHideFlags: 0
@@ -10433,6 +10451,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48948dfe9d76b07488dacd46a7955fa1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &8598381219254044121
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7019289823431046784}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SynchronizePosition: 1
+  m_SynchronizeRotation: 1
+  m_SynchronizeScale: 0
+  m_UseLocal: 1
 --- !u!1 &7024837822357490840
 GameObject:
   m_ObjectHideFlags: 0
@@ -11483,6 +11517,7 @@ GameObject:
   m_Component:
   - component: {fileID: 14900898533416189}
   - component: {fileID: 882326883249861472}
+  - component: {fileID: 8354778287136124745}
   m_Layer: 0
   m_Name: RL0N-25_low
   m_TagString: Untagged
@@ -11550,6 +11585,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48948dfe9d76b07488dacd46a7955fa1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &8354778287136124745
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8545070738427014817}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SynchronizePosition: 1
+  m_SynchronizeRotation: 1
+  m_SynchronizeScale: 0
+  m_UseLocal: 1
 --- !u!1 &8590774625714165909
 GameObject:
   m_ObjectHideFlags: 0
@@ -12028,7 +12079,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 80
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!136 &8867581697913055190
 CapsuleCollider:
@@ -12065,7 +12116,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da2461b0b9ccdab468affb323100bda3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 7
+  speed: 10
   rotateSpeed: 100
 --- !u!114 &721628398717635061
 MonoBehaviour:
@@ -12174,6 +12225,9 @@ MonoBehaviour:
   - {fileID: 7352163391964073889}
   - {fileID: 8649468725592242650}
   - {fileID: 454557500683352642}
+  - {fileID: 8598381219254044121}
+  - {fileID: 8354778287136124745}
+  - {fileID: 5074455081606511323}
   - {fileID: 7595435191292223348}
   - {fileID: 7407315029010152557}
   - {fileID: 4437930608542032517}

@@ -38,7 +38,7 @@ public class PlayerMovement : MonoBehaviour
         if(Input.GetButtonDown("Jump") && canJump == true)
         {
             canJump = false;
-            rb.AddForce(Vector3.up * 2000 * Time.deltaTime, ForceMode.VelocityChange);
+            rb.AddForce(Vector3.up * 1800 * Time.deltaTime, ForceMode.VelocityChange);
             StartCoroutine(JumpAgain());
         }
     }
