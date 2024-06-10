@@ -11,12 +11,13 @@ public class SpawnCharacters : MonoBehaviour
     public Transform[] weaponSpawnPoints;
     public float weaponRespawnTime = 10;
 
+
     // Start is called before the first frame update
     void Start()
     {
         if(PhotonNetwork.IsConnected)
         {
-            PhotonNetwork.Instantiate(character.name, spawnPoints[PhotonNetwork.CountOfPlayers -1].position, spawnPoints[PhotonNetwork.CountOfPlayers -1].rotation);
+           StartCoroutine(fixSpawn());
         }
     }
 
@@ -32,5 +33,11 @@ public class SpawnCharacters : MonoBehaviour
         {
             PhotonNetwork.Instantiate(weapons[i].name, weaponSpawnPoints[i].position, weaponSpawnPoints[i].rotation);
         }
+    }
+    
+    IEnumerator fixSpawn()
+    {
+        yield return new WaitForSeconds(1f);
+         PhotonNetwork.Instantiate(character.name, spawnPoints[PhotonNetwork.CurrentRoom.PlayerCount -1].position, spawnPoints[PhotonNetwork.CurrentRoom.PlayerCount -1].rotation);
     }
 }

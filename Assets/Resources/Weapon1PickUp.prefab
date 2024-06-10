@@ -298,4 +298,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 516c31fc36198f64680e565baa148495, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  repawnTime: 5
+  repawnTime: 20
+  weaponType: 1
+  ammoRefillAmt: 60
