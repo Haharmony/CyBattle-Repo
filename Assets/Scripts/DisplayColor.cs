@@ -87,6 +87,38 @@ public class DisplayColor : MonoBehaviourPunCallbacks
         GetComponent<PhotonView>().RPC("GunDamage", RpcTarget.AllBuffered, shooterName, name, damageAmt);
     }
 
+    public void ReceiveDamage(string attackerName, float damageAmt)
+    {
+        GetComponent<PhotonView>().RPC("ApplyDamage", RpcTarget.AllBuffered, attackerName, damageAmt);
+    }
+
+    [PunRPC]
+    void ApplyDamage(string attackerName, float damageAmt)
+    {
+        for (int i = 0; i < namesObject.GetComponent<NicknamesScript>().names.Length; i++)
+        {
+            if (this.GetComponent<PhotonView>().Owner.NickName == namesObject.GetComponent<NicknamesScript>().names[i].text)
+            {
+                var healthbar = namesObject.GetComponent<NicknamesScript>().healthbars[i].gameObject.GetComponent<Image>();
+                if (healthbar.fillAmount > 0.05f)
+                {
+                    this.GetComponent<Animator>().SetBool("Hit", true);
+                    healthbar.fillAmount -= damageAmt;
+                    if (healthbar.fillAmount <= 0.05f)
+                    {
+                        healthbar.fillAmount = 0;
+                        this.GetComponent<Animator>().SetBool("Dead", true);
+                        this.gameObject.GetComponent<PlayerMovement>().isDead = true;
+                        this.gameObject.GetComponent<WeaponChangePro>().isDead = true;
+                        this.gameObject.GetComponentInChildren<AimLookAtRef>().isDead = true;
+                        this.gameObject.layer = LayerMask.NameToLayer("Ignore Raycast");
+                        namesObject.GetComponent<NicknamesScript>().RunMessage(attackerName, this.GetComponent<PhotonView>().Owner.NickName);
+                    }
+                }
+            }
+        }
+    }
+
     [PunRPC]
     void GunDamage(string shooterName, string name, float damageAmt)
     {
